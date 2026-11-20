@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Master India | McDonald's & Domino's Style Online Ordering</title>
+  <!-- Google Fonts: Plus Jakarta Sans for crisp modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement / Indian Festive Flash Deal Ticker -->
+  <aside class="announcement-bar">
+    <div class="announcement-content">
+      <span class="flash-badge">⚡ DHAMAKA OFFER</span>
+      <span class="announcement-text">Flat ₹150 OFF on orders above ₹599 with code <strong class="promo-pill-code" data-code="FESTIVE150">FESTIVE150</strong></span>
+      <div class="flash-timer">
+        <span>Deal ends in:</span>
+        <span id="countdown-timer" class="timer-digits">14:59</span>
+      </div>
+      <button class="quick-apply-top-btn" data-code="FESTIVE150">Apply Code</button>
+    </div>
+  </aside>
+
+  <!-- Main Application Wrapper -->
+  <div class="app-layout">
+    
+    <!-- Left & Central Main Shopping Section -->
+    <main class="main-content">
+      
+      <!-- Top Header Navigation -->
+      <header class="top-header">
+        <!-- Brand Logo -->
+        <div class="brand" id="brand-logo" title="Food Master India">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+              <line x1="6" y1="1" x2="6" y2="4"></line>
+              <line x1="10" y1="1" x2="10" y2="4"></line>
+              <line x1="14" y1="1" x2="14" y2="4"></line>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">FOOD MASTER</span>
+            <span class="brand-sub">INDIA 🇮🇳</span>
+          </div>
+        </div>
+
+        <!-- Search Bar with Embedded Filter -->
+        <div class="search-container">
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="text" 
+              id="search-input" 
+              placeholder="Search McAloo Tikki, McSpicy Paneer, Peri Peri Fries, Peppy Paneer, Garlic Bread..." 
+              autocomplete="off"
+            >
+            <button id="clear-search-btn" class="clear-btn" title="Clear search" aria-label="Clear search">
+              &times;
+            </button>
+            <button id="filter-toggle-btn" class="filter-btn" title="Sort & Filter" aria-label="Sort and Filter">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="21" x2="4" y2="14"></line>
+                <line x1="4" y1="10" x2="4" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="3"></line>
+                <line x1="20" y1="21" x2="20" y2="16"></line>
+                <line x1="20" y1="16" x2="20" y2="3"></line>
+                <line x1="1" y1="14" x2="7" y2="14"></line>
+                <line x1="9" y1="8" x2="15" y2="8"></line>
+                <line x1="17" y1="16" x2="23" y2="16"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Quick Sort & Filter Dropdown Menu -->
+          <div id="filter-dropdown" class="filter-dropdown">
+            <div class="filter-group">
+              <label>Sort By</label>
+              <select id="sort-select">
+                <option value="default">Most Popular</option>
+                <option value="price-asc">Price: Low to High (₹)</option>
+                <option value="price-desc">Price: High to Low (₹)</option>
+                <option value="cal-asc">Lowest Calories</option>
+                <option value="name-asc">Name: A to Z</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Dietary & Type</label>
+              <div class="dietary-options">
+                <button type="button" class="dietary-chip active" data-diet="all">All Items</button>
+                <button type="button" class="dietary-chip" data-diet="veg">🟢 Pure Veg Only</button>
+                <button type="button" class="dietary-chip" data-diet="non-veg">🔴 Non-Veg Only</button>
+                <button type="button" class="dietary-chip" data-diet="spicy">🌶️ Desi Spicy</button>
+                <button type="button" class="dietary-chip" data-diet="deals">🏷️ Offers Only</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Header Actions: Veg toggle switch, Offers pill, Profile, Mobile Cart -->
+        <div class="header-actions">
+          
+          <!-- FSSAI Green Pure Veg Toggle Switch (Domino's / Swiggy / Zomato style) -->
+          <label class="pure-veg-switch" title="Toggle Pure Veg Only">
+            <input type="checkbox" id="pure-veg-toggle">
+            <span class="veg-switch-slider">
+              <span class="fssai-icon-mini veg-symbol"></span>
+              <span class="veg-switch-label">VEG ONLY</span>
+            </span>
+          </label>
+
+          <button id="view-deals-btn" class="offers-pill-btn" title="View Indian Festive Coupons">
+            <span class="gift-icon">🎁</span>
+            <span>Offers</span>
+            <span class="deals-dot"></span>
+          </button>
+          
+          <button class="icon-circle-btn profile-btn" title="Customer Profile" aria-label="Customer Profile">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </button>
+
+          <!-- Mobile / Tablet Cart Trigger Button with badge -->
+          <button id="mobile-cart-btn" class="mobile-cart-toggle" aria-label="Toggle Shopping Cart">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span id="mobile-cart-count" class="cart-badge-count">0</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Domino's & McDonald's India Festive Deals Carousel -->
+      <section class="promo-carousel-section">
+        <div class="promo-carousel-container" id="promo-carousel">
+          
+          <!-- Slide 1: FESTIVE150 -->
+          <div class="promo-card gradient-terracotta">
+            <div class="promo-card-left">
+              <span class="promo-tag">DESI DHAMAKA DEAL</span>
+              <h3 class="promo-heading">Flat ₹150 OFF on Orders Above ₹599</h3>
+              <p class="promo-sub">Treat your family! McAloo Tikki, McSpicy Paneer, Peppy Paneer & Pizza McPuffs.</p>
+              <div class="promo-action-row">
+                <span class="promo-coupon-code">CODE: <strong>FESTIVE150</strong></span>
+                <button class="promo-apply-btn" data-code="FESTIVE150">Apply Coupon</button>
+              </div>
+            </div>
+            <div class="promo-card-right">
+              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80" alt="Indian Burger Feast" class="promo-hero-img">
+            </div>
+          </div>
+
+          <!-- Slide 2: SPICY50 -->
+          <div class="promo-card gradient-crimson">
+            <div class="promo-card-left">
+              <span class="promo-tag">MCSPICY MADNESS 🌶️</span>
+              <h3 class="promo-heading">Buy 1 McSpicy, Get 2nd at 50% OFF</h3>
+              <p class="promo-sub">Crispy Paneer or Chicken with hot habanero sauce & toasted sesame buns.</p>
+              <div class="promo-action-row">
+                <span class="promo-coupon-code">CODE: <strong>SPICY50</strong></span>
+                <button class="promo-apply-btn" data-code="SPICY50">Apply Coupon</button>
+              </div>
+            </div>
+            <div class="promo-card-right">
+              <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=400&q=80" alt="McSpicy" class="promo-hero-img">
+            </div>
+          </div>
+
+          <!-- Slide 3: PERIPERI -->
+          <div class="promo-card gradient-golden">
+            <div class="promo-card-left">
+              <span class="promo-tag">FREE SHAKER FRIES</span>
+              <h3 class="promo-heading">Free Peri Peri Fries With Any 2 Meals</h3>
+              <p class="promo-sub">Shake it, mix it, love it! Hot masala seasoning on crisp golden fries.</p>
+              <div class="promo-action-row">
+                <span class="promo-coupon-code">CODE: <strong>PERIPERI</strong></span>
+                <button class="promo-apply-btn" data-code="PERIPERI">Apply Coupon</button>
+              </div>
+            </div>
+            <div class="promo-card-right">
+              <img src="https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=400&q=80" alt="Peri Peri Fries" class="promo-hero-img">
+            </div>
+          </div>
+
+          <!-- Slide 4: CRUST399 -->
+          <div class="promo-card gradient-navy">
+            <div class="promo-card-left">
+              <span class="promo-tag">DOMINO'S CRUST COMBO</span>
+              <h3 class="promo-heading">Peppy Paneer Pizza + Stuffed Garlic Bread @ ₹399</h3>
+              <p class="promo-sub">Save ₹120 instantly on the ultimate movie night combo with creamy dip.</p>
+              <div class="promo-action-row">
+                <span class="promo-coupon-code">CODE: <strong>CRUST399</strong></span>
+                <button class="promo-apply-btn" data-code="CRUST399">Apply Coupon</button>
+              </div>
+            </div>
+            <div class="promo-card-right">
+              <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80" alt="Domino's Pizza Combo" class="promo-hero-img">
+            </div>
+          </div>
+
+        </div>
+        <!-- Carousel Dots -->
+        <div class="carousel-indicators" id="carousel-dots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+          <span class="dot" data-index="3"></span>
+        </div>
+      </section>
+
+      <!-- Category Filter Pills Bar -->
+      <section class="category-section">
+        <div class="category-title-row">
+          <h2 class="section-title">McDonald's & Domino's India Menu</h2>
+          <span class="total-menu-counter" id="total-menu-counter">38 Desi Delights</span>
+        </div>
+        <div class="category-pills-wrapper">
+          <div class="category-pills" id="category-pills">
+            <!-- Dynamically populated via script.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Grid Section -->
+      <section class="products-section">
+        <div class="section-header-row">
+          <div class="active-category-indicator">
+            <span id="active-category-name">Indian Burgers & Wraps</span>
+            <span id="product-count-badge" class="count-tag">0 items</span>
+          </div>
+          <div class="menu-view-toggles">
+            <span class="hint-text">💡 Tap card to customize meal with Peri Peri mix & Thums Up, or "+" to quick add</span>
+          </div>
+        </div>
+        
+        <!-- Grid where product cards are rendered -->
+        <div class="products-grid" id="products-grid">
+          <!-- Injected via script.js -->
+        </div>
+
+        <!-- Empty state when no products match -->
+        <div id="no-results" class="no-results-state hidden">
+          <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+          <h3>Koi item nahi mila (No items found)</h3>
+          <p>We couldn't find matching food items. Check spelling or reset the Pure Veg filter.</p>
+          <button id="reset-filters-btn" class="secondary-btn">Reset All Filters</button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Right Sidebar: Interactive Shopping Cart with INR Billing -->
+    <aside class="cart-sidebar" id="cart-sidebar">
+      
+      <!-- Cart Header -->
+      <div class="cart-header">
+        <div class="cart-title-wrapper">
+          <h2 class="cart-title">My Order Cart</h2>
+          <span id="cart-item-counter" class="cart-counter-pill">0</span>
+        </div>
+        <!-- Close button for responsive / slide-over view -->
+        <button id="close-cart-btn" class="close-cart-btn" aria-label="Close Cart">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Domino's Style Promo Coupon Apply Box -->
+      <div class="cart-promo-section">
+        <div class="cart-promo-box">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+            <path d="M7 8h10"></path>
+            <path d="M7 12h10"></path>
+            <path d="M7 16h10"></path>
+          </svg>
+          <input type="text" id="coupon-input" placeholder="Enter coupon code (e.g. FESTIVE150)">
+          <button id="apply-coupon-btn" class="coupon-btn">Apply</button>
+        </div>
+        
+        <!-- Active applied coupon pill -->
+        <div id="applied-coupon-row" class="applied-coupon-tag hidden">
+          <span class="applied-badge-text">
+            <span>🎉 Coupon <strong id="applied-coupon-code">FESTIVE150</strong> applied!</span>
+            <small id="applied-discount-desc">₹150 discount activated</small>
+          </span>
+          <button id="remove-coupon-btn" class="remove-coupon-btn" title="Remove coupon">&times;</button>
+        </div>
+
+        <!-- Quick Coupon Shortcuts Drawer Toggle -->
+        <button id="toggle-available-offers-btn" class="view-available-coupons-btn">
+          <span>🏷️ View Available Indian Deals & Coupons (5)</span>
+          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        <!-- Dropdown / Drawer list of Indian coupons -->
+        <div id="available-coupons-list" class="available-coupons-drawer hidden">
+          <div class="coupon-item-mini" data-code="FESTIVE150">
+            <div class="coupon-info">
+              <strong>FESTIVE150</strong>
+              <p>Flat ₹150 OFF on orders above ₹599</p>
+            </div>
+            <button class="mini-apply-btn" data-code="FESTIVE150">Apply</button>
+          </div>
+          <div class="coupon-item-mini" data-code="SPICY50">
+            <div class="coupon-info">
+              <strong>SPICY50</strong>
+              <p>Buy 1 McSpicy, Get 2nd at 50% OFF</p>
+            </div>
+            <button class="mini-apply-btn" data-code="SPICY50">Apply</button>
+          </div>
+          <div class="coupon-item-mini" data-code="PERIPERI">
+            <div class="coupon-info">
+              <strong>PERIPERI</strong>
+              <p>Free Peri Peri Fries (₹129 value) on ₹399+</p>
+            </div>
+            <button class="mini-apply-btn" data-code="PERIPERI">Apply</button>
+          </div>
+          <div class="coupon-item-mini" data-code="CRUST399">
+            <div class="coupon-info">
+              <strong>CRUST399</strong>
+              <p>Flat ₹80 OFF on Pizza + Garlic Bread</p>
+            </div>
+            <button class="mini-apply-btn" data-code="CRUST399">Apply</button>
+          </div>
+          <div class="coupon-item-mini" data-code="DESI20">
+            <div class="coupon-info">
+              <strong>DESI20</strong>
+              <p>20% OFF up to ₹100 on orders above ₹299</p>
+            </div>
+            <button class="mini-apply-btn" data-code="DESI20">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Free Delivery Progress Bar (₹499 Free Delivery threshold standard in India) -->
+      <div class="delivery-threshold-bar" id="delivery-threshold-box">
+        <div class="threshold-label-row">
+          <span id="threshold-status-text">Add ₹150 more for <strong>FREE Delivery</strong></span>
+          <span class="threshold-icon">🛵</span>
+        </div>
+        <div class="threshold-track">
+          <div class="threshold-fill" id="threshold-progress-fill" style="width: 70%;"></div>
+        </div>
+      </div>
+
+      <!-- Scrollable Cart Item List -->
+      <div class="cart-items-container" id="cart-items-container">
+        <!-- Injected via script.js -->
+      </div>
+
+      <!-- Empty Cart Message Placeholder -->
+      <div id="cart-empty-state" class="cart-empty-state">
+        <div class="empty-icon-wrap">
+          <svg viewBox="0 0 24 24" width="42" height="42" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <p class="empty-heading">Aapka Cart Khali Hai (Cart is Empty)</p>
+        <p class="empty-subtext">Add McAloo Tikki, McSpicy Paneer, Pizza McPuff or Peppy Paneer to start!</p>
+      </div>
+
+      <!-- Cart Bill Breakdown & Checkout Footer in INR -->
+      <div class="cart-footer" id="cart-footer">
+        <div class="bill-row">
+          <span class="bill-label">Item Total</span>
+          <span class="bill-value" id="cart-subtotal">₹0</span>
+        </div>
+        <div class="bill-row discount-row hidden" id="cart-discount-row">
+          <span class="bill-label" style="color: #16a34a; font-weight: 700;">Coupon Savings</span>
+          <span class="bill-value" id="cart-discount-value" style="color: #16a34a; font-weight: 800;">-₹0</span>
+        </div>
+        <div class="bill-row">
+          <span class="bill-label">Delivery & Packaging Fee</span>
+          <span class="bill-value" id="cart-delivery-fee">₹35</span>
+        </div>
+        <div class="bill-row dotted-divider">
+          <span class="bill-label">GST <small>(CGST 2.5% + SGST 2.5%)</small></span>
+          <span class="bill-value" id="cart-service-charge">₹0</span>
+        </div>
+        <div class="bill-row total-row">
+          <div class="total-label-wrap">
+            <span class="bill-total-label">Grand Total</span>
+            <span class="total-items-tag" id="cart-total-badge">0 items</span>
+          </div>
+          <span class="bill-total-value" id="cart-grand-total">₹0</span>
+        </div>
+
+        <button id="checkout-btn" class="checkout-btn">
+          Proceed to Order
+        </button>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Cart Backdrop Overlay for Mobile Drawer Mode -->
+  <div id="cart-backdrop" class="cart-backdrop"></div>
+
+  <!-- Customization Modal (McDonald's & Domino's India Style) -->
+  <div id="customize-modal" class="modal-overlay hidden">
+    <div class="modal-card customize-modal-card">
+      <div class="modal-header">
+        <div class="customize-header-title">
+          <div class="custom-fssai-indicator">
+            <span id="custom-fssai-symbol" class="fssai-icon-mini"></span>
+            <span class="modal-category-tag" id="custom-item-category">Burger</span>
+          </div>
+          <h3 id="custom-item-name">McSpicy Paneer Burger®</h3>
+        </div>
+        <button id="customize-close-btn" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body customizer-body">
+        <div class="customizer-hero">
+          <img id="custom-item-img" src="" alt="Custom Item" class="customizer-img">
+          <div class="customizer-hero-info">
+            <p id="custom-item-desc" class="customizer-desc"></p>
+            <span id="custom-item-cals" class="custom-cals-badge"></span>
+          </div>
+        </div>
+
+        <!-- Meal Size Selection (McDonald's India Meal Customizer) -->
+        <div class="customize-section">
+          <h4>1. Make It A Meal</h4>
+          <div class="meal-size-options" id="meal-size-options">
+            <label class="meal-radio-option">
+              <input type="radio" name="meal_option" value="regular" data-price="0" checked>
+              <div class="meal-card-content">
+                <strong>A La Carte</strong>
+                <span>Single Item</span>
+                <span class="meal-extra-price">+₹0</span>
+              </div>
+            </label>
+            <label class="meal-radio-option">
+              <input type="radio" name="meal_option" value="medium" data-price="119">
+              <div class="meal-card-content">
+                <strong>Medium Meal</strong>
+                <span>+ Med Fries & Coke</span>
+                <span class="meal-extra-price">+₹119</span>
+              </div>
+            </label>
+            <label class="meal-radio-option">
+              <input type="radio" name="meal_option" value="large" data-price="159">
+              <div class="meal-card-content">
+                <strong>Large Meal</strong>
+                <span>+ Lrg Fries & Thums Up</span>
+                <span class="meal-extra-price">+₹159</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Add-on Extras (Indian Desi Add-ons) -->
+        <div class="customize-section">
+          <h4>2. Desi Add-ons, Shakers & Dips</h4>
+          <div class="addons-grid">
+            <label class="addon-checkbox">
+              <input type="checkbox" name="custom_addon" value="Peri Peri Shaker Mix" data-price="29">
+              <span>Peri Peri Shaker Mix (+ ₹29)</span>
+            </label>
+            <label class="addon-checkbox">
+              <input type="checkbox" name="custom_addon" value="Extra Melted Cheese Slice" data-price="39">
+              <span>Extra Cheese Slice (+ ₹39)</span>
+            </label>
+            <label class="addon-checkbox">
+              <input type="checkbox" name="custom_addon" value="Cheesy Garlic Dip" data-price="35">
+              <span>Cheesy Garlic Dip (+ ₹35)</span>
+            </label>
+            <label class="addon-checkbox">
+              <input type="checkbox" name="custom_addon" value="Spicy Tandoori Mayo" data-price="35">
+              <span>Tandoori Mayo (+ ₹35)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Special Instructions / Kitchen Note -->
+        <div class="customize-section">
+          <h4>3. Cooking Instructions</h4>
+          <input type="text" id="custom-item-instructions" placeholder="e.g. Jain preparation, extra spicy, no onion..." class="modal-input">
+        </div>
+
+        <!-- Bottom bar of customizer -->
+        <div class="customizer-footer">
+          <div class="customizer-price-wrap">
+            <span class="customizer-price-label">Customized Price</span>
+            <strong id="customizer-final-price">₹0</strong>
+          </div>
+          <button id="add-customized-to-cart-btn" class="confirm-order-btn">
+            Add to My Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal (Indian Flow - UPI, Cash on Delivery, Table Order) -->
+  <div id="checkout-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Review & Confirm Order</h3>
+        <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+      </div>
+      
+      <div class="modal-body" id="modal-body-content">
+        <!-- Order Summary Preview -->
+        <div class="modal-order-summary">
+          <h4>Bill Summary</h4>
+          <div id="modal-summary-list" class="modal-summary-list"></div>
+          
+          <div class="modal-total-box">
+            <span>Total Payable Amount</span>
+            <strong id="modal-payable-total">₹0</strong>
+          </div>
+        </div>
+
+        <!-- Dining Option & Table / Delivery Details -->
+        <div class="modal-inputs">
+          <label>Order Fulfillment</label>
+          <div class="dining-options">
+            <label class="radio-chip">
+              <input type="radio" name="dining_mode" value="Dine-in" checked>
+              <span>Dine-In (Table)</span>
+            </label>
+            <label class="radio-chip">
+              <input type="radio" name="dining_mode" value="Takeaway">
+              <span>Takeaway / Parcel</span>
+            </label>
+            <label class="radio-chip">
+              <input type="radio" name="dining_mode" value="Delivery">
+              <span>Home Delivery</span>
+            </label>
+          </div>
+
+          <label for="order-notes" style="margin-top: 14px;">Delivery Address / Table Number</label>
+          <input type="text" id="order-notes" placeholder="e.g. Table #5 or Flat 402, Green Heights, Bengaluru" class="modal-input">
+        </div>
+
+        <div class="payment-method-note">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+            <line x1="2" y1="10" x2="22" y2="10"></line>
+          </svg>
+          <span>Pay via UPI (GPay / PhonePe / Paytm), Card at Counter or Cash on Delivery.</span>
+        </div>
+
+        <button id="confirm-order-btn" class="confirm-order-btn">
+          Place Order (No Online Card Required)
+        </button>
+      </div>
+
+      <!-- Success Screen inside Modal -->
+      <div id="modal-success-screen" class="modal-success-screen hidden">
+        <div class="success-checkmark">
+          <svg viewBox="0 0 24 24" width="48" height="48" stroke="#10b981" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h3>Order Confirmed! Badhaai Ho 🎉</h3>
+        <p class="order-id-label">Order Token #<span id="order-id-number">IND-8942</span></p>
+        <p class="order-msg">Your delicious meal is being prepared in the kitchen. Expected delivery / serving in 20-25 mins.</p>
+        <button id="new-order-btn" class="checkout-btn" style="margin-top: 16px;">
+          Order More Items
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Domino's India Occasional Slide-in Promo Pop-up -->
+  <div id="promo-slide-popup" class="promo-slide-popup hidden">
+    <button id="close-promo-popup" class="close-promo-popup">&times;</button>
+    <div class="popup-icon">🥟</div>
+    <div class="popup-details">
+      <strong>Special Deal: Add Pizza McPuff®!</strong>
+      <p>Only ₹49 with your active order today.</p>
+    </div>
+    <button id="quick-add-promo-deal-btn" class="popup-add-btn">Add for ₹49</button>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div id="toast" class="toast">
+    <span id="toast-message">Item added to cart</span>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
