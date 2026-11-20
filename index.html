@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shourya Sinha | CS Student & Builder, KIET</title>
+  <meta name="description" content="Personal creative portfolio of Shourya Sinha, a 1st-year Computer Science student at KIET Group of Institutions. Building with C++, Python, and modern web development.">
+  
+  <!-- Modern Clean & Expressive Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Prevent theme flicker on page load -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Ambient Glowing Background Blobs -->
+  <div class="glow-orb orb-1" aria-hidden="true"></div>
+  <div class="glow-orb orb-2" aria-hidden="true"></div>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="header">
+    <div class="nav-container">
+      <a class="nav-brand" href="#home" aria-label="Shourya Sinha Home">
+        <span class="brand-avatar">
+          <span class="avatar-text">SS</span>
+          <span class="avatar-ring"></span>
+        </span>
+        <div class="brand-info">
+          <span class="brand-name">Shourya Sinha</span>
+          <span class="brand-status">1st Year CS &bull; KIET</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="menuBtn" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle navigation menu">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav class="nav-links" id="mainNav" aria-label="Primary navigation">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#playground" class="nav-link">Terminal</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link nav-cta">Let's Connect</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeBtn" type="button" aria-label="Toggle color theme" title="Toggle Dark/Light Mode">
+          <svg class="icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="status-dot-pulse" aria-hidden="true"></span>
+            <span>B.Tech Undergrad &bull; KIET Group of Institutions</span>
+          </div>
+          
+          <h1 class="hero-title">
+            Hey, I'm <span class="gradient-text">Shourya Sinha</span>
+          </h1>
+          
+          <div class="typewriter-container">
+            <span class="typewriter-prefix">I build with </span>
+            <span class="typewriter-text" id="typewriterText">C++ & Algorithms</span>
+            <span class="typewriter-cursor">|</span>
+          </div>
+
+          <p class="hero-lead">
+            First-year engineering student passionate about <strong>low-level systems</strong>, <strong>object-oriented logic</strong>, and building fast, zero-framework web apps. Exploring memory models, pointers, and problem solving from first principles.
+          </p>
+
+          <div class="hero-cta-group">
+            <a class="btn btn-primary glow-btn" href="#projects">
+              <span>View Projects</span>
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+            <a class="btn btn-ghost" href="https://github.com/ShouryaS-dev" target="_blank" rel="noopener noreferrer">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+
+          <div class="hero-tech-pills">
+            <span class="pill-label">Daily Drivers:</span>
+            <span class="mini-pill cpp">C++17</span>
+            <span class="mini-pill python">Python 3</span>
+            <span class="mini-pill js">JavaScript</span>
+            <span class="mini-pill git">Git</span>
+            <span class="mini-pill vscode">VS Code</span>
+          </div>
+        </div>
+
+        <!-- Interactive Interactive IDE / Code Runner Widget -->
+        <div class="hero-interactive" id="playground">
+          <div class="code-window">
+            <div class="window-header">
+              <div class="window-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="window-tabs">
+                <button class="tab-btn active" data-tab="cpp">shourya.cpp</button>
+                <button class="tab-btn" data-tab="python">profile.py</button>
+              </div>
+              <button class="run-code-btn" id="runCodeBtn" title="Compile and Execute Code">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <span>Run</span>
+              </button>
+            </div>
+
+            <!-- Tab Content: C++ -->
+            <div class="code-body active" id="tab-cpp">
+              <pre><code><span class="token-comment">// Shourya Sinha &bull; KIET Group of Institutions</span>
+<span class="token-keyword">#include</span> <span class="token-string">&lt;iostream&gt;</span>
+<span class="token-keyword">#include</span> <span class="token-string">&lt;vector&gt;</span>
+
+<span class="token-keyword">class</span> <span class="token-type">StudentDeveloper</span> {
+<span class="token-keyword">public</span>:
+    <span class="token-type">std::string</span> name = <span class="token-string">"Shourya Sinha"</span>;
+    <span class="token-type">std::string</span> college = <span class="token-string">"KIET, Delhi NCR"</span>;
+    <span class="token-type">std::string</span> track = <span class="token-string">"B.Tech CS (2026-2030)"</span>;
+    
+    <span class="token-type">void</span> <span class="token-function">printMotto</span>() {
+        <span class="token-type">std::cout</span> &lt;&lt; <span class="token-string">"Code with logic. Build with passion!\n"</span>;
+    }
+};
+
+<span class="token-type">int</span> <span class="token-function">main</span>() {
+    <span class="token-type">StudentDeveloper</span> shourya;
+    shourya.<span class="token-function">printMotto</span>();
+    <span class="token-keyword">return</span> <span class="token-number">0</span>;
+}</code></pre>
+            </div>
+
+            <!-- Tab Content: Python -->
+            <div class="code-body" id="tab-python">
+              <pre><code><span class="token-comment"># profile.py &bull; Quick snapshot</span>
+<span class="token-keyword">class</span> <span class="token-type">Developer</span>:
+    <span class="token-keyword">def</span> <span class="token-function">__init__</span>(<span class="token-variable">self</span>):
+        <span class="token-variable">self</span>.name = <span class="token-string">"Shourya Sinha"</span>
+        <span class="token-variable">self</span>.core = [<span class="token-string">"C++"</span>, <span class="token-string">"Python"</span>, <span class="token-string">"JS"</span>]
+        <span class="token-variable">self</span>.current_focus = <span class="token-string">"learncpp.com & STL"</span>
+        <span class="token-variable">self</span>.passion = <span class="token-string">"Clean code &amp; low-level speed"</span>
+
+shourya = <span class="token-function">Developer</span>()
+<span class="token-function">print</span>(f<span class="token-string">"{shourya.name} is online and building!"</span>)</code></pre>
+            </div>
+
+            <!-- Terminal Output Drawer -->
+            <div class="terminal-drawer" id="terminalDrawer">
+              <div class="terminal-bar">
+                <span class="terminal-title">TERMINAL OUTPUT</span>
+                <span class="terminal-status" id="terminalStatus">Ready</span>
+              </div>
+              <div class="terminal-logs" id="terminalLogs">
+                <span class="term-line prompt">$ g++ -O2 shourya.cpp -o app &amp;&amp; ./app</span>
+                <span class="term-line success">&gt;&gt; Code with logic. Build with passion!</span>
+                <span class="term-line info">&gt;&gt; Academic Year: 2026 | Location: Ghaziabad, India</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Grid Section: About & Behind The Code -->
+    <section id="about" class="section">
+      <div class="section-header">
+        <span class="section-tag">WHO I AM</span>
+        <h2 class="section-title">Beyond The Code Editor</h2>
+        <p class="section-subtitle">A candid look at my engineering approach, college journey, and what keeps me building</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Bento Card 1: Main Story -->
+        <div class="bento-card bento-span-2 story-card">
+          <div class="bento-badge">My Journey</div>
+          <h3>From Python Prototypes to C++ Systems</h3>
+          <p>
+            I am a first-year undergraduate pursuing Computer Science at <strong>KIET Group of Institutions</strong>. Instead of rushing to stack 20 different frameworks without understanding the runtime, I believe in mastering the ground fundamentals first.
+          </p>
+          <p>
+            Python introduced me to algorithmic thinking. But to genuinely understand memory allocation, pointers, compiler passes, and cache friendliness, I am digging deep into modern C++ through <strong>learncpp.com</strong> while shipping real web interfaces in vanilla JavaScript.
+          </p>
+          <div class="story-stats">
+            <div class="stat-box">
+              <span class="stat-number">2026</span>
+              <span class="stat-text">Undergraduate Cohort</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">96%</span>
+              <span class="stat-text">Class X Merit (CBSE)</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">83%</span>
+              <span class="stat-text">Class XII PCM (CBSE)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento Card 2: Current Focus / Rabbit Hole -->
+        <div class="bento-card focus-card">
+          <div class="bento-icon">🔍</div>
+          <div class="bento-badge">Active Learning</div>
+          <h3>Current Rabbit Hole</h3>
+          <ul class="rabbit-hole-list">
+            <li>
+              <span class="bullet">&bull;</span>
+              <span><strong>C++ STL:</strong> Vectors, iterators, and time-space complexity</span>
+            </li>
+            <li>
+              <span class="bullet">&bull;</span>
+              <span><strong>learncpp.com:</strong> Mastering references, pointers, and memory layout</span>
+            </li>
+            <li>
+              <span class="bullet">&bull;</span>
+              <span><strong>Native Web:</strong> Crafting zero-framework CSS Grid &amp; ES6+ tooling</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Bento Card 3: Philosophy -->
+        <div class="bento-card philosophy-card">
+          <div class="bento-icon">⚡</div>
+          <div class="bento-badge">Core Principle</div>
+          <h3>First-Principles Thinking</h3>
+          <p>
+            If I don't understand how it works under the hood, I don't consider it learned. I reimplement algorithms across both Python and C++ to compare compiled speed vs interpreted ergonomics.
+          </p>
+        </div>
+
+        <!-- Bento Card 4: Fun Fact / College Life -->
+        <div class="bento-card college-life-card">
+          <div class="bento-icon">☕</div>
+          <div class="bento-badge">Campus Life</div>
+          <h3>Fuel &amp; Environment</h3>
+          <p>
+            Powered by hot chai, curiosity, and reading compiler diagnostics. Active in campus tech discussions and always up for hackathons, pair programming, and open-source explorations!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section with Vibrant Categorized Badges -->
+    <section id="skills" class="section section-alt">
+      <div class="section-header">
+        <span class="section-tag">TECH STACK</span>
+        <h2 class="section-title">Tools &amp; Technologies</h2>
+        <p class="section-subtitle">Hands-on technologies I use for coursework, algorithmic practice, and project building</p>
+      </div>
+
+      <div class="skills-showcase">
+        <!-- Category 1 -->
+        <div class="skill-group-card">
+          <div class="group-header">
+            <span class="group-icon">💻</span>
+            <div>
+              <h3>Programming Languages</h3>
+              <p>Core problem-solving and systems tools</p>
+            </div>
+          </div>
+          <div class="badge-cloud">
+            <div class="skill-badge badge-cpp">
+              <span class="badge-dot"></span>
+              <strong>C++ (C++17)</strong>
+              <span class="badge-sub">OOP &bull; STL &bull; Pointers</span>
+            </div>
+            <div class="skill-badge badge-py">
+              <span class="badge-dot"></span>
+              <strong>Python 3</strong>
+              <span class="badge-sub">Scripts &bull; Algorithms &bull; Logic</span>
+            </div>
+            <div class="skill-badge badge-js">
+              <span class="badge-dot"></span>
+              <strong>JavaScript</strong>
+              <span class="badge-sub">ES6+ &bull; DOM &bull; Async API</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="skill-group-card">
+          <div class="group-header">
+            <span class="group-icon">🌐</span>
+            <div>
+              <h3>Web Architecture</h3>
+              <p>Fast, lightweight, zero-framework interfaces</p>
+            </div>
+          </div>
+          <div class="badge-cloud">
+            <div class="skill-badge badge-html">
+              <span class="badge-dot"></span>
+              <strong>Semantic HTML5</strong>
+              <span class="badge-sub">Landmarks &bull; WCAG A11y</span>
+            </div>
+            <div class="skill-badge badge-css">
+              <span class="badge-dot"></span>
+              <strong>Modern CSS3</strong>
+              <span class="badge-sub">Grid &bull; Flexbox &bull; Variables</span>
+            </div>
+            <div class="skill-badge badge-perf">
+              <span class="badge-dot"></span>
+              <strong>Web Performance</strong>
+              <span class="badge-sub">Zero Bloat &bull; Responsive</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="skill-group-card">
+          <div class="group-header">
+            <span class="group-icon">🛠️</span>
+            <div>
+              <h3>Engineering Environment</h3>
+              <p>Daily workflow, toolchains &amp; version control</p>
+            </div>
+          </div>
+          <div class="badge-cloud">
+            <div class="skill-badge badge-git">
+              <span class="badge-dot"></span>
+              <strong>Git &amp; GitHub</strong>
+              <span class="badge-sub">Commits &bull; Branching &bull; PRs</span>
+            </div>
+            <div class="skill-badge badge-gcc">
+              <span class="badge-dot"></span>
+              <strong>GCC / G++ Compiler</strong>
+              <span class="badge-sub">CLI &bull; Flags &bull; Debugging</span>
+            </div>
+            <div class="skill-badge badge-vscode">
+              <span class="badge-dot"></span>
+              <strong>VS Code &amp; Terminal</strong>
+              <span class="badge-sub">Keybindings &bull; Bash Basics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section with Interactive Filter Pills -->
+    <section id="projects" class="section">
+      <div class="section-header">
+        <span class="section-tag">PORTFOLIO WORK</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Real code repositories and practical applications built from scratch</p>
+      </div>
+
+      <div class="project-filters" role="group" aria-label="Filter projects by category">
+        <button class="filter-btn active" data-filter="all">All Work (4)</button>
+        <button class="filter-btn" data-filter="web">Web Front-End (2)</button>
+        <button class="filter-btn" data-filter="code">C++ &amp; Systems (2)</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card glow-card" data-category="web">
+          <div class="card-accent-bar accent-red"></div>
+          <div class="project-top">
+            <span class="project-badge badge-live">❤️ Community Initiative</span>
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">Blood Shivir &mdash; Donor Outreach Portal</h3>
+          <p class="project-desc">
+            A responsive community web portal designed to coordinate blood donation camps, donor registration workflows, and emergency donor lookups across local regions.
+          </p>
+          <div class="project-points">
+            <div>&bull; Built with pure HTML5, CSS Grid, and custom vanilla JavaScript form validation</div>
+            <div>&bull; Accessible high-contrast layout designed for quick response on mobile screens</div>
+          </div>
+          <div class="project-tech">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>Vanilla JS</span>
+            <span>WCAG 2.1</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ShouryaS-dev" class="link-btn" target="_blank" rel="noopener noreferrer">
+              <span>View Repository</span>
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card glow-card" data-category="code">
+          <div class="card-accent-bar accent-blue"></div>
+          <div class="project-top">
+            <span class="project-badge badge-algo">⚡ Systems &amp; Logic</span>
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">Python &harr; C++ Comparative Archive</h3>
+          <p class="project-desc">
+            A deep-dive problem archive comparing algorithmic implementations across Python (dynamic &amp; high-level) and modern C++17 (compiled, static typing, and direct memory controls).
+          </p>
+          <div class="project-points">
+            <div>&bull; Compares execution benchmarks, pointer safety, and STL data structure overhead</div>
+            <div>&bull; Strengthens low-level mental models behind dynamic interpreters vs machine code</div>
+          </div>
+          <div class="project-tech">
+            <span>C++17</span>
+            <span>Python 3</span>
+            <span>STL</span>
+            <span>Memory Profiling</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ShouryaS-dev" class="link-btn" target="_blank" rel="noopener noreferrer">
+              <span>View Repository</span>
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card glow-card" data-category="code">
+          <div class="card-accent-bar accent-cyan"></div>
+          <div class="project-top">
+            <span class="project-badge badge-tools">🛠️ Algorithmic CLI</span>
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">C++ Coursework &amp; Numerical Utilities</h3>
+          <p class="project-desc">
+            Modular console utilities and numerical algorithm suites developed for first-year academic coursework. Includes matrix operations, sorting algorithms, and CLI menu parsers.
+          </p>
+          <div class="project-points">
+            <div>&bull; Clean modular compilation with custom `.hpp` header files and input sanitation</div>
+            <div>&bull; Tested against extreme bounds, negative constraints, and floating-point errors</div>
+          </div>
+          <div class="project-tech">
+            <span>C++</span>
+            <span>CLI Architecture</span>
+            <span>Math Algorithms</span>
+            <span>G++</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ShouryaS-dev" class="link-btn" target="_blank" rel="noopener noreferrer">
+              <span>View Repository</span>
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card glow-card" data-category="web">
+          <div class="card-accent-bar accent-purple"></div>
+          <div class="project-top">
+            <span class="project-badge badge-web">✨ Modern Web</span>
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">Interactive Builder Portfolio</h3>
+          <p class="project-desc">
+            This portfolio website! Designed with zero heavy frameworks, sub-100ms loading speeds, interactive live code runner, CSS variables, and seamless theme persistence.
+          </p>
+          <div class="project-points">
+            <div>&bull; Zero-flicker dark/light mode toggle with system preference auto-detection</div>
+            <div>&bull; Interactive code runner, dynamic typewriter, and responsive bento grid</div>
+          </div>
+          <div class="project-tech">
+            <span>HTML5</span>
+            <span>Modern CSS</span>
+            <span>Vanilla JS</span>
+            <span>Zero Bloat</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ShouryaS-dev" class="link-btn" target="_blank" rel="noopener noreferrer">
+              <span>View Repository</span>
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Education Timeline -->
+    <section id="education" class="section section-alt">
+      <div class="section-header">
+        <span class="section-tag">BACKGROUND</span>
+        <h2 class="section-title">Academic Journey</h2>
+        <p class="section-subtitle">Foundations, engineering track, and school milestones</p>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Current Degree -->
+        <div class="timeline-card current-track">
+          <div class="timeline-glow-pill">CURRENT</div>
+          <div class="timeline-main">
+            <div class="timeline-meta">
+              <span class="period">2026 &ndash; 2030 (Expected)</span>
+              <span class="tag">B.Tech Undergrad</span>
+            </div>
+            <h3 class="timeline-title">B.Tech in Computer Science</h3>
+            <p class="timeline-inst">KIET Group of Institutions &middot; Ghaziabad (Delhi NCR)</p>
+            <p class="timeline-desc">
+              Building strong fundamentals in discrete mathematics, digital electronics, object-oriented concepts, and algorithmic problem solving.
+            </p>
+            <div class="coursework-chips">
+              <span class="chip">Data Structures</span>
+              <span class="chip">Object-Oriented Programming</span>
+              <span class="chip">Engineering Math</span>
+              <span class="chip">Digital Principles</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Class XII -->
+        <div class="timeline-card">
+          <div class="timeline-glow-pill">CLASS XII</div>
+          <div class="timeline-main">
+            <div class="timeline-meta">
+              <span class="period">2024 &ndash; 2026</span>
+              <span class="score-tag">Score: 83%</span>
+            </div>
+            <h3 class="timeline-title">Senior Secondary School Examination (CBSE)</h3>
+            <p class="timeline-inst">Vanasthali Public School &middot; Vasundhara, Ghaziabad</p>
+            <p class="timeline-desc">
+              Physics, Chemistry, and Mathematics (PCM). Developed analytical discipline and foundational quantitative reasoning.
+            </p>
+          </div>
+        </div>
+
+        <!-- Class X -->
+        <div class="timeline-card">
+          <div class="timeline-glow-pill">CLASS X</div>
+          <div class="timeline-main">
+            <div class="timeline-meta">
+              <span class="period">2022 &ndash; 2024</span>
+              <span class="score-tag highlight-score">Score: 96%</span>
+            </div>
+            <h3 class="timeline-title">Secondary School Examination (CBSE)</h3>
+            <p class="timeline-inst">Vanasthali Public School &middot; Vasundhara, Ghaziabad</p>
+            <p class="timeline-desc">
+              Academic excellence in Mathematics, Science, and Computer Applications; sparked my early curiosity in programming.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <span class="section-tag">SAY HELLO</span>
+        <h2 class="section-title">Let's Connect &amp; Collaborate</h2>
+        <p class="section-subtitle">Open for campus hackathons, open-source projects, student tech clubs, and friendly feedback!</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-card">
+          <div class="contact-glow-header">
+            <h3>Drop a Note!</h3>
+            <p>
+              Whether you want to discuss a C++ problem, collaborate on a project, or just chat about college life, I'd love to hear from you.
+            </p>
+          </div>
+
+          <div class="contact-methods">
+            <div class="contact-row">
+              <div class="contact-circle-icon">✉</div>
+              <div class="contact-detail">
+                <span class="label">Email Address</span>
+                <div class="email-copy-wrapper">
+                  <a href="mailto:shourya7sinha@gmail.com" class="value link" id="emailLink">shourya7sinha@gmail.com</a>
+                  <button type="button" class="btn-copy" id="copyEmailBtn" aria-label="Copy email address to clipboard">
+                    <span id="copyText">Copy</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-circle-icon">📍</div>
+              <div class="contact-detail">
+                <span class="label">Location</span>
+                <span class="value">Ghaziabad / Delhi NCR, India</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links-bar">
+            <a href="https://github.com/ShouryaS-dev" class="social-link" target="_blank" rel="noopener noreferrer">
+              <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/shourya-sinha-9a6a12422/" class="social-link" target="_blank" rel="noopener noreferrer">
+              <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" action="" method="POST" novalidate>
+          <div class="form-field">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Rahul Verma" autocomplete="name" required>
+            <span class="field-error" id="name-err" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="e.g. rahul@example.com" autocomplete="email" required>
+            <span class="field-error" id="email-err" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Hey Shourya, checked out your portfolio and wanted to connect..." required></textarea>
+            <span class="field-error" id="message-err" role="alert"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit glow-btn">
+            <span>Send Direct Message</span>
+            <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+
+          <p class="form-hint">Sends directly to <strong>shourya7sinha@gmail.com</strong>.</p>
+          
+          <div class="form-status" id="formStatus" role="status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p class="footer-author">
+          <strong>Shourya Sinha</strong> &bull; First-Year CS Undergrad @ KIET Group of Institutions
+        </p>
+        <p class="footer-meta">Crafted with modern HTML5, CSS Grid, and vanilla JavaScript. 0% framework bloat, 100% passion.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
